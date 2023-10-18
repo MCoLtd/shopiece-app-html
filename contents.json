@@ -1,0 +1,59 @@
+{
+    "id": "56045aae-e8ae-42aa-b7f9-156b65d4f04d",
+    "slug": "about",
+    "title": "会社概要2",
+    "body": "親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から",
+    "status": "public",
+    "access": "public",
+    "createdAt": "2023-10-14T22:25:38.322Z",
+    "updatedAt": "2023-10-14T22:25:38.322Z",
+    "category": {
+        "id": 54,
+        "name": "最初のカテゴリ",
+        "sort": 1
+    },
+    "files": [],
+    "blocks": [
+        {
+            "id": 509,
+            "title": "",
+            "body": "新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰",
+            "color": "#000000",
+            "bgColor": "#ffffff",
+            "sortNo": 0,
+            "type": "row_asc",
+            "file": {
+                "id": "46f3f757-8257-46dd-82f7-a0485aa5dda9",
+                "tag": null,
+                "name": "Crankin_7147303_3455_1",
+                "domain": "https://storage-staging.shopiece.io/",
+                "thumbnail": "px0dljninl/1697322300654-thumbnail.jpg",
+                "large": "px0dljninl/1697322300654.jpg",
+                "createdAt": "2023-10-14T22:25:00.807Z",
+                "updatedAt": "2023-10-14T22:25:00.807Z",
+                "deletedAt": null
+            }
+        },
+        {
+            "id": 510,
+            "title": "",
+            "body": "を抜かす奴があるかと云ったから、この次は抜かさずに飛んで見せますと答えた。（青空文庫より）親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事",
+            "color": "#000000",
+            "bgColor": "#ffffff",
+            "sortNo": 1,
+            "type": "column_asc",
+            "file": {
+                "id": "2c089251-a450-4a77-8d21-ef42f4524a45",
+                "tag": null,
+                "name": "A0001640-00",
+                "domain": "https://storage-staging.shopiece.io/",
+                "thumbnail": "px0dljninl/1697322331628-thumbnail.jpg",
+                "large": "px0dljninl/1697322331628.jpg",
+                "createdAt": "2023-10-14T22:25:31.773Z",
+                "updatedAt": "2023-10-14T22:25:31.773Z",
+                "deletedAt": null
+            }
+        }
+    ],
+    "options": []
+}

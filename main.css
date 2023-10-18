@@ -1,0 +1,34 @@
+.container {
+  width: 1200px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.row_asc {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+}
+
+.col_asc {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.row_desc {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row-reverse;
+}
+
+.col_desc {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column-reverse;
+}
