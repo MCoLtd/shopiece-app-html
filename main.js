@@ -3,92 +3,94 @@ import Content from './content.js';
 const app = Vue.createApp({
   data() {
     return {
+      json: null,
       meta: null,
       menus: null,
-      bodyColor: '',
-      bgColor: '',
-      linkColor: '',
+      init: false,
     }
   },
-  async created() {
-    const fjUrl = 'https://stage.api.shopiece.io/free-jsons';
-    // const fjUrl = './free-json.json';
+  async mounted() {
+    const fjUrl = `https://stage.api.shopiece.io/free-jsons`;
     const res = await fetch(fjUrl, {
       method: 'GET',
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
-        'x-client': 'px0dljninl'
+        'x-client': 'weg5teu8gi'
       }
     });
 
-    const json = await res.json();
-    localStorage.setItem('menu', JSON.stringify(json.json));
+    this.json = await res.json();
 
-    const meta = json.json.metadata;
+    localStorage.setItem('menu', JSON.stringify(this.json.json));
 
-    this.bodyColor = meta.color;
-    this.bgColor = meta.bgColor;
-    this.linkColor = meta.linkColor;
+    if (this.json.json?.menu?.length > 0) {
+      this.init = true;
+    }
+  },
+  updated() {
+    this.meta = this.json.json.metadata;
+    if (this.meta) {
+      this.init = true;
 
-    document.title = meta.title;
-    document.body.style.backgroundColor = meta.bgColor;
-
-    const metaTags = document.getElementsByTagName('meta');
-    for (const tag of metaTags) {
-      const a = tag.getAttribute('name');
-      if (a === 'description') {
-        tag.setAttribute('content', meta.description);
-      }
+      document.body.style.backgroundColor = this.meta.bgColor;
     }
 
-    this.meta = json.json.metadata;
-    this.menus = json.json.menu;
+    this.menus = this.json.json.menu;
   },
   methods: {
     onClickMenu: (event) => {
+      console.log(event.url);
       if (event.url.length === 0) {
         router.push('/', { params: { contentId: event.contentId }});
       } else {
-        router.push(event.url, { params: { contentId: event.contentId }});
+        router.push('/' + event.url, { params: { contentId: event.contentId }});
       }
     }
   },
   computed: {
     styleObject() {
       return {
-        color: this.bodyColor,
-        backgroundColor: this.bgColor,
+        color: this.meta?.bodyColor,
+        backgroundColor: this.meta?.bgColor,
       }
     }
   },
   template: `
     <div v-bind:style="styleObject">
-      <component :is="'style'">
-        a {
-          color: {{ linkColor }};
-        }
-        .btn {
-          color: {{ linkColor }};
-        }
-      </component>
-      <main class="container">
-        <div class="d-flex flex-column flex-sm-row align-items-center my-3">
-          <img :src="meta?.logoUrl" class="w-25 w-sm-50">
-          <header>
-            <ul class="d-flex gap-3">
-              <li v-for="menu in menus" class="mr-2">
-                <a class="btn" @click="onClickMenu(menu)">{{ menu.name }}</a>
-              </li>
-            </ul>
-          </header>
-        </div>
+    <component :is="'style'">
+      a {
+        color: {{ meta?.linkColor }};
+      }
+      .btn {
+        color: {{ meta?.linkColor }};
+      }
+    </component>
+    <main class="container">
+      <div v-if="!init">
+        <h2>ホームページを作りましょう。</h2>
+        <ol>
+          <li>ページ管理のメニューから、ページを追加しましょう。</li>
+          <li>ホームの編集ボタンから、メニューを追加しましょう。</li>
+          <li>ホームページとして表示されます。</li>
+        </ol>
+      </div>
+      <div class="d-flex flex-column flex-sm-row align-items-center my-3">
+        <img :src="meta?.logoUrl" class="w-25 w-sm-50">
+        <header>
+          <ul class="d-flex gap-3">
+            <li v-for="menu in menus" class="mr-2">
+              <a class="btn" @click="onClickMenu(menu)">{{ menu.name }}</a>
+            </li>
+          </ul>
+        </header>
+      </div>
 
-        <router-view></router-view>
+      <router-view></router-view>
 
-        <footer>{{ meta?.copyright }}</footer>
-      </main>
-    </div>
+      <footer>{{ meta?.copyright }}</footer>
+    </main>
+  </div>
   `,
 })
 
