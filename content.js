@@ -5,6 +5,7 @@ export default {
     }
   },
   async created() {
+    // 画面初期表示の処理
     const route = VueRouter.useRoute();
 
     const json = await this.loadContent(route.path);
@@ -12,6 +13,7 @@ export default {
     this.content = json;
   },
   async beforeRouteUpdate (to, from, next) {
+    // メニューがクリックされて、contentを表示させる処理
     const params = to;
     const id = params.path;
     const json = await this.loadContent(id);
@@ -21,6 +23,7 @@ export default {
     next();
   },
   methods: {
+    // content APIを呼び出す処理
     loadContent: async (path) => {
       const item = localStorage.getItem('menu');
       let menus = JSON.parse(item);

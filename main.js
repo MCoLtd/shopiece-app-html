@@ -10,6 +10,7 @@ const app = Vue.createApp({
     }
   },
   async mounted() {
+    // free-jsons API を呼び出してホームページに表示するメニューを取得する
     const fjUrl = `https://stage.api.shopiece.io/free-jsons`;
     const res = await fetch(fjUrl, {
       method: 'GET',
@@ -29,6 +30,7 @@ const app = Vue.createApp({
     }
   },
   updated() {
+    // free-jsons API から取得したcssをhtmlに反映させる
     this.meta = this.json.json.metadata;
     if (this.meta) {
       this.init = true;
@@ -39,6 +41,7 @@ const app = Vue.createApp({
     this.menus = this.json.json.menu;
   },
   methods: {
+    // メニューがクリックされた場合の処理
     onClickMenu: (event) => {
       console.log(event.url);
       if (event.url.length === 0) {
@@ -49,6 +52,7 @@ const app = Vue.createApp({
     }
   },
   computed: {
+    // style設定
     styleObject() {
       return {
         color: this.meta?.bodyColor,
@@ -94,6 +98,7 @@ const app = Vue.createApp({
   `,
 })
 
+// vuejs初期化
 const routes = [
   {
     name: 'top',
